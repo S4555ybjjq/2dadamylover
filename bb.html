@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pour Dada ♡</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+    background:
+        radial-gradient(circle at 15% 15%, #fff1a8 0%, transparent 24%),
+        radial-gradient(circle at 85% 80%, #ffc5d8 0%, transparent 30%),
+        linear-gradient(135deg, #e982a7 0%, #f4a8bf 45%, #ffd65c 130%);
+
+    color: white;
+}
+
+
+/* =========================
+   PAGE
+========================= */
+
+.page {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+
+/* =========================
+   CARTE
+========================= */
+
+.card {
+    width: min(92vw, 530px);
+    min-height: 590px;
+
+    padding: 40px 25px;
+
+    border-radius: 36px;
+
+    background: rgba(255,255,255,.17);
+
+    border: 1px solid rgba(255,255,255,.45);
+
+    backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 30px 80px rgba(110,35,65,.25);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+.content {
+    width: 100%;
+}
+
+
+/* =========================
+   TITRE
+========================= */
+
+.small-title {
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+
+    margin-bottom: 17px;
+
+    opacity: .8;
+}
+
+h1 {
+    margin: 0 0 45px;
+
+    font-family: Georgia, serif;
+
+    font-size: clamp(38px, 9vw, 56px);
+
+    font-weight: normal;
+
+    line-height: 1.08;
+}
+
+
+/* =========================
+   ZONE ENVELOPPE
+========================= */
+
+.envelope-area {
+    width: 310px;
+    height: 235px;
+
+    margin: auto;
+
+    position: relative;
+
+    cursor: pointer;
+
+    animation: float 3s ease-in-out infinite;
+}
+
+
+/* =========================
+   LETTRE JAUNE
+========================= */
+
+.letter {
+    position: absolute;
+
+    left: 22px;
+    right: 22px;
+
+    top: 18px;
+
+    height: 175px;
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff9ce,
+            #ffe98b
+        );
+
+    color: #b95775;
+
+    font-family: Georgia, serif;
+
+    font-size: 18px;
+
+    padding-top: 30px;
+
+    box-shadow:
+        0 8px 18px rgba(120,60,40,.15);
+
+    z-index: 1;
+
+    transition:
+        transform 1.1s cubic-bezier(.2,.8,.2,1);
+}
+
+
+/* =========================
+   CORPS DE L'ENVELOPPE
+========================= */
+
+.envelope {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 310px;
+    height: 185px;
+
+    border-radius: 10px;
+
+    background: #ed7fa4;
+
+    box-shadow:
+        0 20px 30px rgba(100,35,60,.28);
+
+    z-index: 3;
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   RABAT
+========================= */
+
+.flap {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left: 155px solid transparent;
+    border-right: 155px solid transparent;
+    border-top: 112px solid #f39bb7;
+
+    transform-origin: top center;
+
+    transition:
+        transform 1s cubic-bezier(.2,.8,.2,1);
+
+    z-index: 7;
+}
+
+
+/* =========================
+   DEVANT DE L'ENVELOPPE
+========================= */
+
+.front {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 110px;
+
+    background: #e8759d;
+
+    clip-path: polygon(
+        0 0,
+        50% 65%,
+        100% 0,
+        100% 100%,
+        0 100%
+    );
+
+    z-index: 5;
+}
+
+
+/* =========================
+   DADA
+========================= */
+
+.name {
+    position: absolute;
+
+    left: 50%;
+    bottom: 30px;
+
+    transform: translateX(-50%);
+
+    z-index: 8;
+
+    white-space: nowrap;
+
+    font-family: Georgia, serif;
+
+    font-size: 22px;
+
+    letter-spacing: 3px;
+
+    color: #fff7c9;
+
+    text-shadow:
+        0 2px 5px rgba(120,40,60,.2);
+}
+
+
+/* =========================
+   CŒUR JAUNE
+========================= */
+
+.seal {
+    position: absolute;
+
+    left: 50%;
+    top: 105px;
+
+    transform: translate(-50%, -50%);
+
+    width: 52px;
+    height: 52px;
+
+    border-radius: 50%;
+
+    background: #ffd84f;
+
+    color: #d95d7d;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 25px;
+
+    box-shadow:
+        0 7px 16px rgba(100,50,30,.25);
+
+    z-index: 10;
+
+    transition:
+        opacity .4s,
+        transform .4s;
+}
+
+
+/* =========================
+   OUVERTURE
+========================= */
+
+.open .flap {
+    transform: rotateX(180deg);
+}
+
+.open .letter {
+    transform: translateY(-120px);
+}
+
+.open .seal {
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%)
+        scale(.4);
+}
+
+
+/* =========================
+   INSTRUCTION
+========================= */
+
+.instruction {
+    margin-top: 28px;
+
+    font-size: 15px;
+
+    opacity: .9;
+}
+
+
+/* =========================
+   MESSAGE FINAL
+========================= */
+
+.message {
+    display: none;
+
+    animation: appear 1s ease;
+}
+
+.message p {
+    max-width: 420px;
+
+    margin: 0 auto 24px;
+
+    font-family: Georgia, serif;
+
+    font-size: clamp(22px, 5.5vw, 30px);
+
+    line-height: 1.55;
+}
+
+.final {
+    margin-top: 30px;
+
+    font-family: Georgia, serif;
+
+    font-size: 27px;
+}
+
+
+/* =========================
+   CŒURS
+========================= */
+
+.hearts {
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 20;
+}
+
+.heart {
+    position: absolute;
+
+    bottom: -30px;
+
+    animation:
+        rise 4.5s linear forwards;
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes float {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+@keyframes rise {
+
+    to {
+        transform:
+            translateY(-110vh)
+            translateX(var(--x))
+            rotate(20deg);
+
+        opacity: 0;
+    }
+}
+
+@keyframes appear {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<div class="hearts" id="hearts"></div>
+
+
+<div class="page">
+
+    <div class="card">
+
+        <div class="content">
+
+
+            <div class="small-title">
+                Pour Dada
+            </div>
+
+
+            <h1 id="title">
+                Une petite lettre<br>
+                pour toi ♡
+            </h1>
+
+
+            <!-- ENVELOPPE -->
+
+            <div id="opening">
+
+
+                <div
+                    class="envelope-area"
+                    id="envelopeArea"
+                >
+
+
+                    <!-- LETTRE JAUNE -->
+
+                    <div class="letter">
+                        Une petite lettre<br>
+                        rien que pour toi ♡
+                    </div>
+
+
+                    <!-- ENVELOPPE ROSE -->
+
+                    <div class="envelope">
+
+                        <!-- RABAT -->
+
+                        <div class="flap"></div>
+
+
+                        <!-- DEVANT -->
+
+                        <div class="front"></div>
+
+
+                        <!-- PRÉNOM -->
+
+                        <div class="name">
+                            DADA ♡
+                        </div>
+
+
+                        <!-- CŒUR -->
+
+                        <div class="seal">
+                            ♥
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="instruction">
+                    Appuie sur l’enveloppe 💌
+                </div>
+
+
+            </div>
+
+
+            <!-- MESSAGE -->
+
+            <div
+                class="message"
+                id="message"
+            >
+
+                <p>
+                    <strong>
+                        Je t’aime énormément.
+                    </strong>
+
+                    <br>
+
+                    Plus que les mots ne peuvent le dire.
+                </p>
+
+
+                <p>
+                    Je ferai en sorte de te donner
+                    tout l’amour qu’il te faut.
+                </p>
+
+
+                <div class="final">
+                    Je t’aime, Dada. ♡
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const envelopeArea =
+    document.getElementById("envelopeArea");
+
+const opening =
+    document.getElementById("opening");
+
+const message =
+    document.getElementById("message");
+
+const title =
+    document.getElementById("title");
+
+const hearts =
+    document.getElementById("hearts");
+
+let opened = false;
+
+
+/* =========================
+   CŒURS
+========================= */
+
+function heartsBurst() {
+
+    for (let i = 0; i < 30; i++) {
+
+        const heart =
+            document.createElement("span");
+
+        heart.className = "heart";
+
+        heart.textContent =
+            Math.random() > .25
+            ? "♡"
+            : "♥";
+
+        heart.style.left =
+            (10 + Math.random() * 80) + "%";
+
+        heart.style.setProperty(
+            "--x",
+            (Math.random() * 260 - 130) + "px"
+        );
+
+        heart.style.animationDelay =
+            (Math.random() * .7) + "s";
+
+        heart.style.fontSize =
+            (15 + Math.random() * 20) + "px";
+
+        heart.style.color =
+            Math.random() > .5
+            ? "#fff0a3"
+            : "#ffd0df";
+
+        hearts.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 5000);
+    }
+}
+
+
+/* =========================
+   CLIC
+========================= */
+
+envelopeArea.onclick = function() {
+
+    if (opened) return;
+
+    opened = true;
+
+    envelopeArea.classList.add("open");
+
+    heartsBurst();
+
+
+    setTimeout(() => {
+
+        opening.style.display = "none";
+
+        title.style.display = "none";
+
+        message.style.display = "block";
+
+        heartsBurst();
+
+    }, 1500);
+
+};
+
+</script>
+
+</body>
+</html>
